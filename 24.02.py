@@ -55,23 +55,22 @@ class Usel():
                     usel_to_remove.prev.next = usel_to_remove.next
                 if usel_to_remove.next:
                     usel_to_remove.next.prev = usel_to_remove.prev
-                if usel_to_remove == self.head:  # Если удаляем голову
+                if usel_to_remove == self.head:  
                     self.head = usel_to_remove.next
-                if usel_to_remove == self.tail:  # Если удаляем хвост
+                if usel_to_remove == self.tail:  
                     self.tail = usel_to_remove.prev
-                if usel_to_remove == self.current:  # Если удаляем текущий
+                if usel_to_remove == self.current: 
                     self.current = usel_to_remove.prev
 
                 del self.actions_map[action_id]
 
-                # Обновляем action_id для оставшихся узлов
-                current_node = self.head
+                current_usel = self.head
                 new_id = 1
-                while current_node:
-                    current_node.action_id = new_id
-                    self.actions_map[new_id] = current_node
+                while current_usel:
+                    current_usel.action_id = new_id
+                    self.actions_map[new_id] = current_usel
                     new_id += 1
-                    current_node = current_node.next
+                    current_usel = current_usel.next
 
         
         def filret_and_remove(self, action_type):
